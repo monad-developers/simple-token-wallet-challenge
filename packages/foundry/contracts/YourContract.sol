@@ -36,8 +36,8 @@ contract YourContract {
     owner = _owner;
   }
 
-  // Modifier: used to define a set of rules that must be met before or after a function is executed
-  // Check the withdraw() function
+  // Modifier: ensures that only the owner of the contract can execute the function
+  // It is used in the withdraw() function to restrict access to the owner only
   modifier isOwner() {
     // msg.sender: predefined variable that represents address of the account that called the current function
     require(msg.sender == owner, "Not the Owner");
@@ -45,7 +45,8 @@ contract YourContract {
   }
 
   /**
-   * Function that allows anyone to change the state variable "greeting" of the contract and increase the counters
+   * Function that allows anyone to change the state variable "greeting" of the contract, increase the counters,
+   * and set the "premium" status based on the Ether sent with the transaction.
    *
    * @param _newGreeting (string memory) - new greeting to save on the contract
    */
@@ -73,7 +74,7 @@ contract YourContract {
   }
 
   /**
-   * Function that allows the owner to withdraw all the Ether in the contract
+   * Function that allows the owner to withdraw all the Ether in the contract balance
    * The function can only be called by the owner of the contract as defined by the isOwner modifier
    */
   function withdraw() public isOwner {
