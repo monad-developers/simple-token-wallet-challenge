@@ -7,8 +7,8 @@ import "solidity-bytes-utils/BytesLib.sol";
 
 /**
  * @dev Temp Vm implementation
- * @notice calls the tryffi function on the Vm contract
- * @notice will be deleted once the forge/std is updated
+ * @notice calls the tryFfi function on the Vm contract
+ * @notice will be deleted once the forge-std is updated
  */
 struct FfiResult {
   int32 exit_code;
@@ -18,7 +18,7 @@ struct FfiResult {
 
 interface tempVm {
   function tryFfi(
-    string[] calldata
+    string[] memory
   ) external returns (FfiResult memory);
 }
 
